@@ -25,6 +25,15 @@ function showError(error){
     notificationElement.style.display = "block";
     notificationElement.innerHTML = `<p>${error.message}</p>`;
 }
+function getWeather(latitude, longitude){
+    fetch('https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&long=${longitude}&units=metric&appid=1bffc22256ef642e8130ab1a1ff621ee')
+    .then(function(response){
+        let data = response.json();
+        return data;
+    })
+    console.log(data); 
+    }
+}
 // Data Fetching
 btn.addEventListener('click',function(){
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&units=metric&appid=1bffc22256ef642e8130ab1a1ff621ee')
