@@ -6,10 +6,49 @@ const temp = document.querySelector(".temp");
 const iconElement = document.querySelector(".weather-icon")
 const notificationElement = document.querySelector(".notification")
 
-// location Detecting
+const weather = {};
 
-function showPosition(position) {
-    desc.innerHTML = position.coords.latitude;
+// location Detecting
+if('geolocation' in navigator){
+    navigator.geolocation.getCurrentPosition(setPosition, showError);
+}else{
+    notificationElement.style.display = "block";
+    notificationElement.innerHTML = "<p>Not Supported</p> "
+}
+function setPosition(position){
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+
+    getWeather(latitude, longitude);
+}
+function showError(error){
+    notificationElement.style.display = "block";
+    notificationElement.innerHTML = `<p> ${error.message} </p>`;
+}
+function getWeather(latitude, longitude){
+    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=1bffc22256ef642e8130ab1a1ff621ee`;
+
+    fetch(api)
+        .then(function(response){
+            let data = response.json();
+            return data;
+        })
+        .then(function(data){
+            weather.temperature.value = data.main.temp;
+            weather.desc = data.weather[0].description;
+            weather.iconId = data.weathe[0].icon;
+            weather.city = data.name;
+            weather.country = data.sys.country;
+        })
+        .then(function(){
+            displayWeather();
+        });
+}
+function displayWeather(){
+    iconElement.innerHTML = `<img src="resources/icons/black/png/128x128/${weather.iconId}.png" />`;
+    temp.innerHTML = weather.temperature.value;
+    desc.innerHTML = weather.description;
+    cityName.innerHTML = `${weather.city}, ${weather.country}`;
 }
 // Data Fetching
 btn.addEventListener('click',function(){
