@@ -33,7 +33,7 @@ function getWeather(latitude, longitude){
     })
     console.log(data); 
     }
-}
+
 // Data Fetching
 btn.addEventListener('click',function(){
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&units=metric&appid=1bffc22256ef642e8130ab1a1ff621ee')
