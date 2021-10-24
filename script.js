@@ -7,7 +7,12 @@ const iconElement = document.querySelector(".weather-icon")
 const notificationElement = document.querySelector(".notification")
 
 // location Detecting
-
+if ('geolocation' in navigator){
+    navigator.geolocation.getCurrentPosition(setPosition, showError);
+}else{
+    notificationElement.style.display = "block";
+    notificationElement.innerHTML = "<p>Browser not supports</p>";
+}
 // Data Fetching
 btn.addEventListener('click',function(){
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&units=metric&appid=1bffc22256ef642e8130ab1a1ff621ee')
