@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="/resources/font/Rimouski.css">
+        <link rel="stylesheet" href="/resources/icon.css">
+        <link rel="stylesheet" href="/resources/iconstyle.css">
+        <link rel="stylesheet" href="/style.css">
+        <link rel="shortcut icon" href="/resources/Logo.jpg" type="image/jpg">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Keen weather</title>
+    </head>
+    <body>
+        <div class="logo bg">
+            <img src="/resources/Logo.jpg" alt="" class="logo" />
+        </div>
+        <div class="input">
+            <h3>Enter Your City:</h3>
+            <input id="city" type="search" placeholder="New Delhi">
+            <button id="btn" type="submit"><i class="fas fa-search"></i></button>
+        </div>      
+        <div class="output">
+            <div class="app-title">
+                <p> Keen Weather</p>
+            </div>
+            <div class="notification"></div>
+            <div class="weather-container">
+                <div class="weather-icon">
+                    <img src="/resources/icons/black/png/128x128/unknown.png" alt="" >
+                </div>
+                <div class="temperature-value">
+                    <p class="temp">-</p>
+                </div>    
+                <div class="temperature-description">
+                    <p class="desc">-</p>
+                </div>
+                <div class="location">
+                    <p class="cityName">-</p>
+                </div>
+            </div>    
+        </div>
+        <script src="/script.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdGQKI4sEj5TZAjNCds422V_ZHevD45Fo"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    </body>
+</html>
