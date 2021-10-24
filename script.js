@@ -7,33 +7,18 @@ const iconElement = document.querySelector(".weather-icon")
 const notificationElement = document.querySelector(".notification")
 
 // location Detecting
-if ('geolocation' in navigator){
-    navigator.geolocation.getCurrentPosition(setPosition, showError);
+function geolocation() {
+    if ('geolocation' in navigator){
+    navigator.geolocation.getCurrentPosition(showPosition);
 }else{
     notificationElement.style.display = "block";
     notificationElement.innerHTML = "<p>Browser not supports</p>";
 }
-
-function setPosition(position){
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude;
-
-    getWeather(latitude, longitude);
 }
 
-function showError(error){
-    notificationElement.style.display = "block";
-    notificationElement.innerHTML = `<p>${error.message}</p>`;
+function showPosition(position) {
+    desc.innerHTML = position.coords.latitude;
 }
-function getWeather(latitude, longitude){
-    fetch('https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&long=${longitude}&units=metric&appid=1bffc22256ef642e8130ab1a1ff621ee')
-    .then(function(response){
-        let data = response.json();
-        return data;
-    })
-    console.log(data); 
-    }
-
 // Data Fetching
 btn.addEventListener('click',function(){
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&units=metric&appid=1bffc22256ef642e8130ab1a1ff621ee')
