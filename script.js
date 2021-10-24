@@ -8,12 +8,12 @@ const notificationElement = document.querySelector(".notification")
 
 // location Detecting
 function geolocation() {
-    if ('geolocation' in navigator){
+    if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition(showPosition);
 }else{
     notificationElement.style.display = "block";
     notificationElement.innerHTML = "<p>Browser not supports</p>";
-}
+    }
 }
 
 function showPosition(position) {
