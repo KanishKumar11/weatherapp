@@ -5,41 +5,9 @@ const desc = document.querySelector(".desc");
 const temp = document.querySelector(".temp");
 const iconElement = document.querySelector(".weather-icon");
 const notificationElement = document.querySelector(".notification");
+const wIcon = document.getElementById("w_icon");
 
-// location Detecting
-if('geolocation' in navigator){
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-}else{
-    notificationElement.style.display = "block";
-    notificationElement.innerHTML = "<p>Not Supported</p> "
-}
-function showPosition(position){
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude;
-
-    getWeather(latitude, longitude);
-}
-function showError(error){
-    notificationElement.style.display = "block";
-    notificationElement.innerHTML = `<p> ${error.message} </p>`;
-}
-function getWeather(latitude, longitude){
-    const api = "https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=1bffc22256ef642e8130ab1a1ff621ee";
-
-    fetch(api)
-        .then(function(response){
-            let data = response.json();
-            return data;
-        })
-        // console.log(api)
-        .then(function(data){
-            weather.temp.value = data.main.temp;
-            weather.desc = data.weather[0].description;
-            weather.iconId = data.weather[0].icon;
-            weather.city = data.name;
-            weather.country = data.sys.country;
-        })
-        console.log(api)
+// location Detecting]
 
 // Data Fetching
 btn.addEventListener('click',function(){
@@ -49,10 +17,12 @@ btn.addEventListener('click',function(){
         let cityVal = data['name']+","+data['sys']['country'];
         let tempVal = data['main']['temp'];
         let descVal = data['weather'][0]['description'];
+        let iconVal = data['weather'][0]['icon'];
     
         cityName.innerHTML = cityVal;
         temp.innerHTML = tempVal+"°"+"<span>C</span>";
         desc.innerHTML = descVal;
+        wIcon.src = "./resources/icons/"+iconVal+".png";
     })
    
     
