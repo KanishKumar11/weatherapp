@@ -10,12 +10,12 @@ const weather = {};
 
 // location Detecting
 if('geolocation' in navigator){
-    navigator.geolocation.getCurrentPosition(setPosition, showError);
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
 }else{
     notificationElement.style.display = "block";
     notificationElement.innerHTML = "<p>Not Supported</p> "
 }
-function setPosition(position){
+function showPosition(position){
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
 
@@ -33,23 +33,25 @@ function getWeather(latitude, longitude){
             let data = response.json();
             return data;
         })
+        // console.log(api)
         .then(function(data){
-            weather.temperature.value = data.main.temp;
+            weather.temp.value = data.main.temp;
             weather.desc = data.weather[0].description;
             weather.iconId = data.weathe[0].icon;
             weather.city = data.name;
             weather.country = data.sys.country;
         })
+    
         .then(function(){
             displayWeather();
         });
 }
 function displayWeather(){
     iconElement.innerHTML = `<img src="resources/icons/black/png/128x128/${weather.iconId}.png" />`;
-    temp.innerHTML = weather.temperature.value;
+    temp.innerHTML = temp.value;
     desc.innerHTML = weather.description;
     cityName.innerHTML = `${weather.city}, ${weather.country}`;
-}
+};
 // Data Fetching
 btn.addEventListener('click',function(){
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&units=metric&appid=1bffc22256ef642e8130ab1a1ff621ee')
