@@ -31,7 +31,7 @@ if(navigator.geolocation) { //check if geolocation is available
         input.value = cityVal;
 
       });
-    },showError)
+    },showError())
 } else{
     notificationElement.style.display = "block";
     notificationElement.innerHTML = "<p>Location permission denied</p>";
