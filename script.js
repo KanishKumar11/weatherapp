@@ -13,11 +13,9 @@ const wIcon = document.getElementById("w_icon");
 
 if (navigator.geolocation) { //check if geolocation is available
     navigator.geolocation.getCurrentPosition(function(position) {
-      console.log(position);
       let pos1 = position.coords.latitude;
       let pos2 = position.coords.longitude;
 
-      
       const api = "https://api.openweathermap.org/data/2.5/weather?lat="+pos1+"&lon="+pos2+"&units=metric&appid=1bffc22256ef642e8130ab1a1ff621ee";
       fetch(api)
       .then(response => response.json())
@@ -34,7 +32,6 @@ if (navigator.geolocation) { //check if geolocation is available
         input.value = cityVal;
 
       });
-      console.log(api);
     })
 }   else{
     notificationElement.style.display = "block";
