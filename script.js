@@ -19,6 +19,7 @@ if (navigator.geolocation) { //check if geolocation is available
       .then(data => {
           let cityVal = data['name'];
 
+          
           cityName.innerHTML = cityVal;
       });
       console.log(api);
