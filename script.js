@@ -31,12 +31,16 @@ if(navigator.geolocation) { //check if geolocation is available
         input.value = cityVal;
 
       });
-    })
+    },showError)
 } else{
     notificationElement.style.display = "block";
     notificationElement.innerHTML = "<p>Location permission denied</p>";
 }
+function showError(error){
+    notificationElement.style.display = "block";
+    notificationElement.innerHTML = "<p>Location permission denied</p>";
 
+}
 // Data Fetching
 btn.addEventListener('click',function(){
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&units=metric&appid=1bffc22256ef642e8130ab1a1ff621ee')
