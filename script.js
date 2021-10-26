@@ -7,9 +7,21 @@ const iconElement = document.querySelector(".weather-icon");
 const notificationElement = document.querySelector(".notification");
 const wIcon = document.getElementById("w_icon");
 
+
+navigator.permissions.query({ name: 'geolocation' }).then(function(result) {
+    /* result.status = "prompt" */
+});
+navigator.geolocation.getCurrentPosition(function(result) { /* ... */  })
+
+navigator.permissions.query({ name: 'geolocation' }).then(function(result) {
+    /* result.status = "granted" */
+});
+
+navigator.permissions.query({ name: 'push', userVisibleOnly:true }).then(function(result) { /* ... */ });
+
 // location Detecting
 if (navigator.geolocation) { //check if geolocation is available
-    navigator.geolocation.getCurrentPosition(function(position){
+    navigator.geolocation.getCurrentPosition(function(position) {
       console.log(position);
       let pos1 = position.coords.latitude;
       let pos2 = position.coords.longitude;
