@@ -31,10 +31,11 @@ if(navigator.geolocation) { //check if geolocation is available
         input.value = cityVal;
 
       });
-    },showError(error))
-} else{
-    notificationElement.style.display = "block";
-    notificationElement.innerHTML = "<p>Location permission denied</p>";
+    })
+
+// } else{
+//     notificationElement.style.display = "block";
+//     notificationElement.innerHTML = "<p>Location permission denied</p>";
 }
 function showError(error){
     notificationElement.style.display = "block";
