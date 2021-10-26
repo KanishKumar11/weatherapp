@@ -36,7 +36,10 @@ if (navigator.geolocation) { //check if geolocation is available
       });
       console.log(api);
     })
-}     
+}   else{
+    notificationElement.style.display = "block";
+    notificationElement.innerHTML = "Location permission denied";
+}  
 
 // Data Fetching
 btn.addEventListener('click',function(){
