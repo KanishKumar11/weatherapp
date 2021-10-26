@@ -6,8 +6,20 @@ const temp = document.querySelector(".temp");
 const iconElement = document.querySelector(".weather-icon");
 const notificationElement = document.querySelector(".notification");
 const wIcon = document.getElementById("w_icon");
+const successCallback = (position) =>
+{
+    console.log(position);
+};
+const errorCallback = (error) => {
+    console.log(error);
+    let err = error.message;
+    // notificationElement.p = "err";
+    // console.log(err);
+    notificationElement.style.display = "block";
+    notificationElement.innerHTML = error.message;
+};
 
-
+navigator.geolocation.watchPosition(successCallback, errorCallback);
 
 // location Detecting
 if(navigator.geolocation) { //check if geolocation is available
@@ -32,14 +44,6 @@ if(navigator.geolocation) { //check if geolocation is available
 
       });
     })
-
-// } else{
-//     notificationElement.style.display = "block";
-//     notificationElement.innerHTML = "<p>Location permission denied</p>";
-}
-function showError(error){
-    notificationElement.style.display = "block";
-    notificationElement.innerHTML = "<p>Location permission denied</p>";
 
 }
 // Data Fetching
