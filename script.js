@@ -6,6 +6,8 @@ const temp = document.querySelector(".temp");
 const iconElement = document.querySelector(".weather-icon");
 const notificationElement = document.querySelector(".notification");
 const wIcon = document.getElementById("w_icon");
+const min = document.querySelector(".min");
+const max = document.querySelector(".max");
 const successCallback = (position) =>
 {
     console.log(position);
@@ -35,12 +37,16 @@ if(navigator.geolocation) { //check if geolocation is available
         let tempVal = data['main']['temp'];
         let descVal = data['weather'][0]['description'];
         let iconVal = data['weather'][0]['icon'];
+        let minVal = data['main']['temp_min'];
+        let maxVal = data['main']['temp_max'];
     
         cityName.innerHTML = cityVal;
         temp.innerHTML = tempVal+"°"+"<span>C</span>";
         desc.innerHTML = descVal;
         wIcon.src = "./resources/icons/"+iconVal+".png";
         input.value = cityVal;
+        min.innerHTML = "Min :" + minVal + "°"+"<span>C</span> &nbsp &nbsp &nbsp";
+        max.innerHTML = "Max :" + maxVal + "°"+"<span>C</span>";
 
       });
     })
@@ -55,11 +61,15 @@ btn.addEventListener('click',function(){
         let tempVal = data['main']['temp'];
         let descVal = data['weather'][0]['description'];
         let iconVal = data['weather'][0]['icon'];
+        let minVal = data['main']['temp_min'];
+        let maxVal = data['main']['temp_max'];
     
         cityName.innerHTML = cityVal;
         temp.innerHTML = tempVal+"°"+"<span>C</span>";
         desc.innerHTML = descVal;
         wIcon.src = "./resources/icons/"+iconVal+".png";
+        min.innerHTML = "Min :" + minVal + "°"+"<span>C</span> &nbsp &nbsp &nbsp";
+        max.innerHTML = "Max :" + maxVal + "°"+"<span>C</span>";
     })
    
     
