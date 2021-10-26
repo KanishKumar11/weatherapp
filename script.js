@@ -8,18 +8,9 @@ const notificationElement = document.querySelector(".notification");
 const wIcon = document.getElementById("w_icon");
 
 
-navigator.permissions.query({ name: 'geolocation' }).then(function(result) {
-    /* result.status = "prompt" */
-});
-navigator.geolocation.getCurrentPosition(function(result) { /* ... */  })
-
-navigator.permissions.query({ name: 'geolocation' }).then(function(result) {
-    /* result.status = "granted" */
-});
-
-navigator.permissions.query({ name: 'push', userVisibleOnly:true }).then(function(result) { /* ... */ });
 
 // location Detecting
+
 if (navigator.geolocation) { //check if geolocation is available
     navigator.geolocation.getCurrentPosition(function(position) {
       console.log(position);
@@ -40,10 +31,13 @@ if (navigator.geolocation) { //check if geolocation is available
         temp.innerHTML = tempVal+"°"+"<span>C</span>";
         desc.innerHTML = descVal;
         wIcon.src = "./resources/icons/"+iconVal+".png";
+        input.value = cityVal;
+
       });
       console.log(api);
     })
 }     
+
 // Data Fetching
 btn.addEventListener('click',function(){
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&units=metric&appid=1bffc22256ef642e8130ab1a1ff621ee')
