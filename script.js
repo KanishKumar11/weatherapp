@@ -10,8 +10,7 @@ const wIcon = document.getElementById("w_icon");
 
 
 // location Detecting
-
-if (navigator.geolocation) { //check if geolocation is available
+if(navigator.geolocation) { //check if geolocation is available
     navigator.geolocation.getCurrentPosition(function(position) {
       let pos1 = position.coords.latitude;
       let pos2 = position.coords.longitude;
@@ -33,10 +32,10 @@ if (navigator.geolocation) { //check if geolocation is available
 
       });
     })
-}   else{
+} else{
     notificationElement.style.display = "block";
-    notificationElement.innerHTML = "Location permission denied";
-}  
+    notificationElement.innerHTML = "<p>Location permission denied</p>";
+}
 
 // Data Fetching
 btn.addEventListener('click',function(){
@@ -58,12 +57,14 @@ btn.addEventListener('click',function(){
 .catch(err => alert("Wrong city Name!"))
 });
 
-// Enter key will work as button click once
+// Enter key will work as button clicked once
 input.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
         event.preventDefault();
         btn.click();
-    }
+
+//[0] will not come when not located
+}
 });
 
 
